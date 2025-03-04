@@ -1,0 +1,15 @@
+{
+    "aliasInfo": [
+      {
+        "name": "google",
+        "alias": "g",
+        "url": "https://www.google.com/search?q="
+      },
+      {
+        "name": "youtube",
+        "alias": "yt",
+        "url": "https://www.youtube.com/results?search_query="
+      }
+    ]
+  }
+  
