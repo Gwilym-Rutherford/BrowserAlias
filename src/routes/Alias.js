@@ -1,6 +1,5 @@
 import express from "express";
-import config from "../config.json" assert {type: "json"};
-import queryString from "querystring";
+import config from "../public/config.json" assert {type: "json"};
 
 export const alias = express.Router();
 

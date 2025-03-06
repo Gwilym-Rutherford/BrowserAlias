@@ -10,6 +10,14 @@
         "alias": "yt",
         "url": "https://www.youtube.com/results?search_query="
       }
+    ],
+    "instantAliasInfo": [
+      {
+        "name": "BlackBoard",
+        "alias": "bb",
+        "url": "https://vle.shef.ac.uk/ultra/course"
+      }
     ]
-  }
+
+}
   

@@ -2,6 +2,9 @@
 ## What is this
 Have you ever seen [DuckDuckGo bangs](https://duckduckgo.com/bangs) notation? well this is that merged with some features I wanted personally.
 
+This is also just a proof of concept, I intend to convert this to a firefox 
+addon later down the lin
+
 ## Features
 1. bang like functionality\
    **example usage:**

@@ -1,0 +1,26 @@
+.searchArea{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.searchBox{
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-style: none;
+    height: 30px;
+    width: 80%;
+    outline-width: 0;
+    background-color: rgb(240, 240, 240);
+}
+
+.searchIcon{
+    background-color: rgb(240, 240, 240);
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;    
+
+}

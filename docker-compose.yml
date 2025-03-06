@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  web:
+  alias:
     build:
       context: .
       dockerfile: dockerfile #ensure your Dockerfile is named Dockerfile, if not change this line.
@@ -8,3 +8,4 @@ services:
       - "3000:3000"
     volumes:
       - .:/usr/src/app
+    restart: unless-stopped
