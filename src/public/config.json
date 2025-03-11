@@ -1,4 +1,5 @@
 {
+  "defaultURL": "https://www.google.com/search?q=",
     "aliasInfo": [
       {
         "name": "google",
@@ -9,6 +10,11 @@
         "name": "youtube",
         "alias": "yt",
         "url": "https://www.youtube.com/results?search_query="
+      },
+      {
+        "name": "Github",
+        "alias": "gh",
+        "url": "https://github.com/"
       }
     ],
     "instantAliasInfo": [
@@ -16,6 +22,21 @@
         "name": "BlackBoard",
         "alias": "bb",
         "url": "https://vle.shef.ac.uk/ultra/course"
+      },
+      {
+        "name": "google drive",
+        "alias": "gd",
+        "url": "https://drive.google.com/drive/u/0/home"
+      },
+      {
+        "name": "google calendar",
+        "alias": "gc",
+        "url": "https://calendar.google.com/calendar/u/0/r/week"
+      },
+      {
+        "name": "google mail",
+        "alias": "gm",
+        "url": "https://mail.google.com/mail/u/0/"
       }
     ]
 
