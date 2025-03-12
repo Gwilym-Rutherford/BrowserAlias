@@ -42,11 +42,11 @@ function alias(config){
 	let aliasInfo = config.aliasInfo;
 	for(let item of aliasInfo){
 		if (item.alias === alias[0]){
-			url = item.url + tokens.slice(1).join(" ");;
+			url = item.url + tokens.slice(1).join(" ");
 			found = true;
 			break;
 		}else if (item.alias == alias[1]){
-			url = item.url + tokens.slice(0, tokenLength - 1).join(" ");;
+			url = item.url + tokens.slice(0, tokenLength - 1).join(" ");
 			found = true;
 			break;
 		}
@@ -54,7 +54,7 @@ function alias(config){
 	}
 
 	if(found){
-		window.location.href = url;
+		window.location.href = encodeString(url);
 	}else{
 		window.location.href = config.defaultURL + query;
 	}
