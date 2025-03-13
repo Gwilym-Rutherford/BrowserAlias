@@ -7,7 +7,6 @@ fetch("config.json")
     searchBox.addEventListener("input", ()=>instantAlias(config));
 	searchBox.addEventListener("keyup", (event)=>{
 		if (event.key === 'Enter'){
-			console.log("triggered");
 			alias(config);
 		}
 	});
@@ -33,65 +32,67 @@ function instantAlias(config){
 }
 
 function alias(config){
-	let url = splitAliasQuery(config);
+	let url = getQueryInfo(config);
 
 	window.location.href = url.url;
 
 }
 
-function splitAliasQuery(config){
+
+function getQueryInfo(config){
+	let info = {
+		url: null, 
+		website: null,
+		searchTerm: null
+	}
+
 	let query = searchBox.value;
 	let tokens = query.split(" ");
-	let tokenLength = tokens.length;
-	let alias = [tokens[0], tokens[tokenLength - 1]];
+	let alias = [tokens[0], tokens[tokens.length - 1]];
 
-	let found = false;
-	let website;
-	let url;
-	let aliasInfo = config.aliasInfo;
-	
-	for(let item of aliasInfo){
-		if (item.alias === alias[0]){
-			url = item.url + tokens.slice(1).join(" ");
-			website = item.name;
-			found = true;
-			break;
-		}else if (item.alias == alias[1]){
-			url = item.url + tokens.slice(0, tokenLength - 1).join(" ");
-			website = item.name;
-			found = true;
-			break;
+	config.aliasInfo.forEach((item)=>{
+		if(alias.includes(item.alias)){
+			let index = alias.indexOf(item.alias);
+			tokens.splice(index, 1);
+
+			info.website = item.name;
+			info.searchTerm = tokens.join(" ");
+			
+			if (tokens.length === 0){
+				info.url = item.baseURL
+			}else{
+				info.url = item.baseURL + item.searchURL + tokens.join("+");
+			}
+
 		}
+	});
+
+	if(info.url == null){
+		info.website = "google";
+		info.url = config.defaultURL + tokens.join("+");
+		info.searchTerm = searchBox.textContent;
 	}
 
-	if(found){
-		url = encodeString(url)
-	}else{
-		url= config.defaultURL + encodeString(query);
-		website = "google";
-	}
-
-	return {
-		url: url,
-		website: website
-	};
+	return info;
 
 }
 
-
-function encodeString(query) {
-    if(typeof query === "string"){
-        return query.split(" ").join("+");
-    } else {
-        return "";
-    }
+function getFirstAlias(arr, item){
+	arr.forEach((arrItem)=>{
+		if(arrItem.name == item){
+			console.log(arrItem);
+			return arrItem
+		}
+	});
 }
 
 function searchDescription(config){
 	let website = document.getElementById("website");
 	let searchTerm = document.getElementById("searchTerm");
 
-	let queryInfo = splitAliasQuery(config);
+	let queryInfo = getQueryInfo(config);
+
+	console.log(queryInfo);
 
 	website.innerText = queryInfo.website;
 	searchTerm.innerText = queryInfo.url;

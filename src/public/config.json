@@ -4,17 +4,20 @@
       {
         "name": "google",
         "alias": "g",
-        "url": "https://www.google.com/search?q="
+        "baseURL": "https://www.google.com/",
+        "searchURL": "search?q="
       },
       {
         "name": "youtube",
         "alias": "yt",
-        "url": "https://www.youtube.com/results?search_query="
+        "baseURL": "https://www.youtube.com/",
+        "searchURL": "results?search_query="
       },
       {
         "name": "Github",
         "alias": "gh",
-        "url": "https://github.com/"
+        "baseURL": "https://github.com/",
+        "searchURL": ""
       }
     ],
     "instantAliasInfo": [
