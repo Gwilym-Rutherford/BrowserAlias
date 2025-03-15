@@ -40,6 +40,26 @@
         "name": "google mail",
         "alias": "gm",
         "url": "https://mail.google.com/mail/u/0/"
+      },
+      {
+        "name": "chat gpt",
+        "alias": "gpt",
+        "url": "https://chatgpt.com/"
+      },
+      {
+        "name": "gemini",
+        "alias": "gem",
+        "url": "https://gemini.google.com/app"
+      },
+      {
+        "name": "netflix",
+        "alias": "net",
+        "url": "https://www.netflix.com/"
+      },
+      {
+        "name": "localhost",
+        "alias": "local",
+        "url": "http://localhost:3001/"
       }
     ]
 

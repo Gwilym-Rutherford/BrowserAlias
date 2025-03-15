@@ -1,32 +1,51 @@
+import { showAliasInfo } from "./aliasInfo.js";
+
 let searchBox = document.getElementById("searchBox");
+let popup = document.getElementById("aliasPopUp");
 
 fetch("config.json")
   .then(response => response.json())
   .then(config => {
-	searchBox.addEventListener("input", ()=>searchDescription(config));
-    searchBox.addEventListener("input", ()=>instantAlias(config));
+	searchBox.addEventListener("input", ()=>{
+		if(searchBox.value.charAt(0) != '!'){
+			searchDescription(config)
+		}
+	});
+    searchBox.addEventListener("input", ()=>{
+		if(searchBox.value.charAt(0) != '!'){
+			instantAlias(config)
+		}
+	});
 	searchBox.addEventListener("keyup", (event)=>{
 		if (event.key === 'Enter'){
-			alias(config);
+			if(searchBox.value.charAt(0) === '!'){
+				showAliasInfo(config, searchBox.value);
+			}else{
+				alias(config);
+			}
 		}
 	});
 
-  })
-  .catch(error => {
+  }).catch(error => {
     console.error("Error loading config.json:", error);
   });
 
-document.addEventListener("keydown", () => {
+document.addEventListener("keydown", (event) => {
     if(searchBox != document.activeElement){
         searchBox.focus();
     }
+
+	if(event.key === "Escape"){
+		popup.style.display = "none";
+	}
 }); 
 
 function instantAlias(config){
   let instantAlias = config.instantAliasInfo;
   instantAlias.forEach((item) => {
     if (item.alias === searchBox.value) {
-      window.location.href = item.url;
+		document.activeElement.blur();
+      	window.location.href = item.url;
     }
   });
 }
@@ -70,7 +89,7 @@ function getQueryInfo(config){
 	if(info.url == null){
 		info.website = "google";
 		info.url = config.defaultURL + tokens.join("+");
-		info.searchTerm = searchBox.textContent;
+		info.searchTerm = searchBox.value;
 	}
 
 	return info;
@@ -91,8 +110,6 @@ function searchDescription(config){
 	let searchTerm = document.getElementById("searchTerm");
 
 	let queryInfo = getQueryInfo(config);
-
-	console.log(queryInfo);
 
 	website.innerText = queryInfo.website;
 	searchTerm.innerText = queryInfo.url;
